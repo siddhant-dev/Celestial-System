@@ -51,6 +51,46 @@ html, body {
   overflow-y: scroll;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+    .form-group {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: .5rem;
+        label {
+            font-size: .875rem;
+            font-weight: bold;
+        }
+        input {
+            padding: .75rem 1rem;
+            width: calc(100% - 2rem - 2px);
+            border-radius: 0.25rem;
+            border: 1px solid $outline;
+            accent-color: $primary;
+            color: $primary;
+            font-weight: bold;
+            &:focus {
+                border-color: $primary;
+            }
+        }
+        button {
+            @include btn($primary);
+            width: 100%;
+        }
+       
+    }
+}
+
+.error {
+    font-size: .75rem;
+    color: $error;
+}
+
 @media screen and (max-width:500px) {
     .modal{
         width: 100vw;
