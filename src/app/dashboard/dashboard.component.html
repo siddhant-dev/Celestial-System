@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="header">
+        <h1>User Management</h1>
+        <button (click)="openOverlay()">Add User</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Email
+                </th>
+                <th scope="col">
+                    Company
+                </th>
+                <th scope="col">
+                    Address
+                </th>
+                <th scope="col">
+                    Address
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userData">
+                <td data-label="Name:">{{user.name}}</td>
+                <td data-label="Email:">{{user.email}}</td>
+                <td data-label="Company:">{{user.company}}</td>
+                <td data-label="Address:"><address>
+                    {{user.address.street}} {{user.address.suite}} {{user.address.city}} {{user.address.zipcode}}
+                </address></td>
+                <td data-label="Actions:" class="buttons">
+                    <button (click)="openOverlay(user.id)">
+                        <ng-icon name="featherEdit"></ng-icon>
+                    </button>
+                    <button class="delete" (click)="deleteUser(user.id)">
+                        <ng-icon name="featherTrash2"></ng-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

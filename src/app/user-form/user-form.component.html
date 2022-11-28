@@ -1,0 +1,67 @@
+
+<div class="container">
+    <fieldset>
+        <legend>{{!id?'Add User Data': 'Update User Data'}}</legend>
+        <form id="userForm" [formGroup]="userForm" class="form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Enter the name" formControlName="name">
+                <div *ngIf="f.name?.invalid && (f.name?.dirty || f.name?.touched)">
+                    <span class="error" *ngIf="f.name?.errors?.['required']">Please enter your name</span>
+                    <span class="error" *ngIf="f.name?.errors?.['minlength']">Please enter a valid name</span>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter the email" formControlName="email">
+                <div *ngIf="f.email?.invalid && (f.email?.dirty || f.email?.touched)">
+                    <span class="error" *ngIf="f.email?.errors?.['required']">Please enter your email</span>
+                    <span class="error" *ngIf="f.email?.errors?.['email']">Please enter a valid email</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" name="company" id="company" placeholder="Enter componay name" formControlName="company">
+                <div *ngIf="f.company?.invalid && (f.company?.dirty || f.company?.touched)">
+                    <span class="error" *ngIf="f.company?.errors?.['required'] || f.company?.errors?.['minlength']">Please enter a valid company</span>
+                </div>
+            </div>
+            <ng-container formGroupName="address">
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input type="text" name="street" id="street" placeholder="Enter street name" formControlName="street">
+                    <div *ngIf="ad.street?.invalid && (ad.street?.dirty || ad.street?.touched)">
+                        <span class="error" *ngIf="ad.street?.errors?.['required']">Please enter street</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="suite">Buildin</label>
+                    <input type="text" name="suite" id="suite" placeholder="Enter building name" formControlName="suite">
+                    <div *ngIf="ad.suite?.invalid && (ad.suite?.dirty || ad.suite?.touched)">
+                        <span class="error" *ngIf="ad.suite?.errors?.['required']">Please enter suite</span>
+                        <span class="error" *ngIf="ad.suite?.errors?.['minlength']">Please enter a valid building name</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city" placeholder="Enter city" formControlName="city">
+                    <div *ngIf="ad.city?.invalid && (ad.city?.dirty || ad.city?.touched)">
+                        <span class="error" *ngIf="ad.city?.errors?.['required']">Please enter city</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">Zip Code</label>
+                    <input type="text" name="zipcode" id="zipcode" placeholder="Enter the zip/postal code" formControlName="zipcode">
+                    <div *ngIf="ad.zipcode?.invalid && (ad.zipcode?.dirty || ad.zipcode?.touched)">
+                        <span class="error" *ngIf="ad.zipcode?.errors?.['minlength']">Please enter a valid zipcode</span>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="form-group btn-group">
+                <button type="submit" (click)="submit()" [disabled]="userForm.invalid">{{id? 'Update': 'Add'}}</button>
+                <button (click)="close()" class="cancel">Cancel</button>
+            </div>
+        </form>
+    </fieldset>
+</div>

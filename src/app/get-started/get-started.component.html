@@ -1,0 +1,66 @@
+<div class="container">
+    <fieldset>
+        <legend>Let's get you signed up!</legend>
+        <form id="registerForm" [formGroup]="registerForm" class="form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" formControlName="name" placeholder="Enter your name">
+                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                    <span class="error" *ngIf="name?.errors?.['required']">Please enter your name</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" formControlName="email" placeholder="Enter your email">
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                    <span class="error" *ngIf="email?.errors?.['required']">Please enter your email</span>
+                    <span class="error" *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Please enter your password"
+                    formControlName="password">
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                    <span class="error" *ngIf="password?.errors?.['required'] ">Please enter your
+                        password</span>
+                    <span class="error" *ngIf="password?.errors?.['minLength'] ">Password must be minium of 8
+                        characters</span>
+                    <span class="error" *ngIf="password?.errors?.['pattern']">
+                        <ul>
+                            <li>
+                                Password must contain at least 1 uppercase & 1 lowercase character
+                            </li>
+                            <li>
+                                Password must contain at least 1 specail character (ex: $, #, !, &, etc).
+                            </li>
+                            <li>
+                                Password must contain at least 1 number.
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+    
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" id="confirmPassword"
+                    placeholder="Please re-enter your password" formControlName="confirmPassword">
+                <div *ngIf="confirmPassword?.invalid && registerForm.invalid && (name?.dirty || name?.touched)">
+                    <span class="error" *ngIf="confirmPassword?.errors?.['required'] ">Please re-enter your
+                        password</span>
+                    <span class="error" *ngIf="registerForm?.errors?.['passwordMatchError']">
+                        Password must match
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" (click)="createUser()" [disabled]="registerForm.invalid">Create Account</button>
+            </div>
+            <div class="error form-group" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+        </form>
+        <p style="text-align: center;">Already have an account? <a class="link" routerLink="/login">Login here</a></p>
+    </fieldset>
+</div>

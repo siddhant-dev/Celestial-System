@@ -1,0 +1,88 @@
+@import "../../utlity.scss";
+
+.container {
+  padding: 1rem 2rem;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      @include btn($secondary);
+    }
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+    td,
+    th {
+        p{
+            margin: 0;
+        }
+      border-bottom: 0.125rem solid $primary;
+      text-align: left;
+      padding: 0.5rem;
+    }
+    tr:nth-child(even) {
+      background-color: lighten($color: $primary, $amount: 70%);
+    }
+    td.buttons {
+      button {
+          @include btn($primary);
+          padding: 0.25rem .35rem;
+          &.delete {
+              background-color: $error !important;
+              margin-left: .75rem;
+          }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 1rem;
+        h1 {
+            font-size: 1.75rem;
+        }
+        table {
+            border: 0;
+          thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            margin: -.125rem;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: .125rem;
+          }
+          
+          tr {
+            display: block;
+            margin-bottom: .625em;
+          }
+          
+          td {
+            display: block;
+            text-align: right;
+            font-size: .875rem;
+            &.buttons {
+                justify-content: flex-end;
+            }
+          }
+          
+          td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            content: attr(aria-label);
+            */
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-right: auto;
+            font-size: .875rem;
+          }
+        }
+    }
+}

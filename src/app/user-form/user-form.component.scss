@@ -1,0 +1,44 @@
+@import '../../utlity.scss';
+
+.container {
+    height: calc(100vh - 6.5rem);
+    width: 50vw;
+    @include center-align;
+    overflow: auto;
+    padding: 2rem 1rem;
+    background-color: #fff;
+    border-radius: 0.25rem  ;
+    fieldset {
+        width: 100%;
+        border-radius: .25rem;
+        border: .125rem solid $primary;
+        padding: 1rem;
+        margin-top: 1rem;
+        legend {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: $primary;
+        }
+        .btn-group {
+           flex-direction: row;
+           justify-content: space-between;
+           .cancel {
+            @include btn($error)
+           }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        height: 100%;
+        width: calc(100% - 1rem);
+        padding: 0.5rem;
+        fieldset {
+            width: 100%;
+            padding: 1rem;
+        }
+    }
+    
+}
+

@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'utlity.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html, body {
+    margin: 0;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Roboto6', sans-serif;
+}
+
+.modal .modal-card{
+    max-width: calc(100% - 2rem);
+    .modal-card-body .lottie {
+      width: 80% !important;
+    }
+  }
+
+.modal-backdrop {
+  background-color: #18191f;
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 101;
+}
+
+.modal {
+  position: fixed;
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  &.active {
+    top: 50%;
+    z-index: 1001;
+    transition: all 0.3s ease-in-out;
+    transform: translate(-50%,-50%);
+    left: 50%;
+  }
+}
+
+.cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width:500px) {
+    .modal{
+        width: 100vw;
+    }
+}

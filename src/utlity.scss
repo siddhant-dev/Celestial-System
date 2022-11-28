@@ -1,0 +1,71 @@
+$primary: #006971;
+$tertiary: #4a6366;
+$secondary: #ac72ac;
+$error: #ba1a1a;
+$background: #fafdfd;
+$outline: #6f797a;
+
+@mixin btn ($color) {
+    text-transform: uppercase;
+    padding: .75rem 1rem;
+    border-radius: .25rem;
+    background-color: $color;
+    border: none;
+    color: white;
+    letter-spacing: .125rem;
+    &:focus {
+        outline: 1px solid $outline;
+    }
+    &:disabled {
+        background-color: $outline;
+    }
+
+}
+
+@mixin center-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+    .form-group {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: .5rem;
+        label {
+            font-size: .875rem;
+            font-weight: bold;
+        }
+        input {
+            padding: .75rem 1rem;
+            width: calc(100% - 2rem - 2px);
+            border-radius: 0.25rem;
+            border: 1px solid $outline;
+            accent-color: $primary;
+            color: $primary;
+            font-weight: bold;
+            &:focus {
+                border-color: $primary;
+            }
+        }
+        button {
+            @include btn($primary);
+            width: 100%;
+        }
+       
+    }
+}
+
+.error {
+    font-size: .75rem;
+    color: $error;
+}

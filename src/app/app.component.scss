@@ -1,0 +1,77 @@
+@import "../utlity.scss";
+
+header {
+    background-color: $primary;
+    padding: 1rem;
+    color:$background;
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        z-index: 1000;
+        h1 {
+            margin: 0;
+        }
+        ul {
+            display: flex;
+            margin: 0;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+            width: 50%;
+            li {
+                a {
+                    text-decoration: none;
+                    color: $background;
+                }
+                button {
+                    @include btn($error )
+                }
+                .active {
+                    font-weight: bold;
+                }
+            }
+
+        }
+        .burger {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    header {
+        nav {
+            ul {
+                position: fixed;
+                background-color: $background;
+                height: calc(100% - 12rem);
+                width: 100%;
+                top: 4rem;
+                left: 0;
+                flex-direction: column;
+                transform: translateX(100%);
+                opacity: 0;
+                padding: 4rem 0;
+                z-index: 3;
+                align-items: center;
+                transition: all .5s ease-out;
+                pointer-events: none;
+                li {
+                    a {
+                        color: black;
+                    }
+                }
+                &.open {
+                  transform: translateX(0);
+                  opacity: 1;
+                  pointer-events: all;
+                }
+            }
+            .burger {
+                @include center-align;
+            }
+        }
+    }
+}
